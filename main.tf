@@ -15,7 +15,6 @@ provider "lacework" {}
 
 provider "aws" {
   region  = "us-east-1"
-  profile = "lacework"
 }
 
 module "aws_config" {
