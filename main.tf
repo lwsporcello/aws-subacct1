@@ -6,7 +6,7 @@ terraform {
     }
     lacework = {
       source  = "lacework/lacework"
-      version = "~> 0.17.0"
+      version = "~> 0.25"
     }
   }
 }
@@ -14,7 +14,7 @@ terraform {
 provider "lacework" {}
 
 provider "aws" {
-  region  = "us-east-1"
+  region = "us-east-1"
 }
 
 #module "aws_config" {
