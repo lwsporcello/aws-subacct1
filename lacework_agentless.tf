@@ -1,4 +1,6 @@
 module "lacework_aws_agentless_scanning_global" {
+  #removing integration - will be managed via org integration
+  count = 0
   source  = "lacework/agentless-scanning/aws"
   version = "~> 0.3"
 
@@ -7,6 +9,8 @@ module "lacework_aws_agentless_scanning_global" {
 }
 
 module "lacework_aws_agentless_scanning_region" {
+  #removing integration - will be managed via org integration
+  count = 0
   source  = "lacework/agentless-scanning/aws"
   version = ">= 0.3.2"
 
