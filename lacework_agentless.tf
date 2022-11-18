@@ -12,7 +12,7 @@ module "lacework_aws_agentless_scanning_region" {
   #removing integration - will be managed via org integration
   count = 0
   source  = "lacework/agentless-scanning/aws"
-  version = ">= 0.3.2"
+  version = ">= 0.3"
 
   regional                              = true
   agentless_scan_ecs_task_role_arn      = module.lacework_aws_agentless_scanning_global.agentless_scan_ecs_task_role_arn
