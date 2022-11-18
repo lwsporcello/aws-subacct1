@@ -24,7 +24,7 @@ module "lacework_aws_agentless_scanning_global" {
 
   global = true
   organization = {
-    monitored_accounts = ["975442149240", "626835103576"]
+    monitored_accounts = ["975442149240", "626835103576", "153466455358"]
     management_account = "975442149240"
   }
 
