@@ -7,6 +7,7 @@ module "lacework_aws_agentless_scanning_global_2" {
   use_existing_iam_role = true
 
   iam_role_arn                          = "arn:aws:iam::626835103576:role/lacework-ca-role"
+  iam_role_external_id                  = "VON8ab7cfd0"
   agentless_scan_ecs_task_role_arn      = "arn:aws:iam::626835103576:role/lacework-ecs-task-role"
   agentless_scan_ecs_execution_role_arn = "arn:aws:iam::626835103576:role/lacework-ecs-execution-role"
   agentless_scan_ecs_event_role_arn     = "arn:aws:iam::626835103576:role/lacework-ecs-event-role"
