@@ -1,15 +1,15 @@
-#module "lacework_aws_agentless_scanning_global_2" {
-#  source = "github.com/lwsporcello/terraform-aws-agentless-scanning-test"
+module "lacework_aws_agentless_scanning_global_2" {
+  source = "github.com/lwsporcello/terraform-aws-agentless-scanning-test"
   #version = "~> 0.6"
 
-#  global                = true
-#  regional              = true
-#  use_existing_iam_role = true
+  global                = true
+  regional              = true
+  use_existing_iam_role = true
 
-#  iam_role_arn                          = "my-arn"
-#  agentless_scan_ecs_task_role_arn      = "my-arn"
-#  agentless_scan_ecs_execution_role_arn = "my-arn"
-#  agentless_scan_ecs_event_role_arn     = "my-arn"
+  iam_role_arn                          = "arn:aws:iam::626835103576:role/lacework-ca-role"
+  agentless_scan_ecs_task_role_arn      = "arn:aws:iam::626835103576:role/lacework-ecs-task-role"
+  agentless_scan_ecs_execution_role_arn = "arn:aws:iam::626835103576:role/lacework-ecs-execution-role"
+  agentless_scan_ecs_event_role_arn     = "arn:aws:iam::626835103576:role/lacework-ecs-event-role"
 
-#  lacework_integration_name = "TF agentless workload test"
-#}
+  lacework_integration_name = "TF agentless workload test"
+}
