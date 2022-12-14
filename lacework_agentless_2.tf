@@ -42,27 +42,27 @@
 #}
 
 #single account multi region example
-provider "aws" {
-  alias = "usw2"
-  region = "us-west-2"
-}
-module "lacework_aws_agentless_scanning_global" {
-  source = "github.com/lwsporcello/terraform-aws-agentless-scanning"
-  global                    = true
-  lacework_integration_name = "TF agentless workload test2"
-}
-module "lacework_aws_agentless_scanning_regional_1" {
-  source = "github.com/lwsporcello/terraform-aws-agentless-scanning"
-  regional                  = true
-  global_module_reference   = module.lacework_aws_agentless_scanning_global
-  lacework_integration_name = "TF agentless workload test2"
-}
-module "lacework_aws_agentless_scanning_regional_2" {
-  source = "github.com/lwsporcello/terraform-aws-agentless-scanning"
-  providers = {
-    aws = aws.usw2
-  }
-  regional                  = true
-  global_module_reference   = module.lacework_aws_agentless_scanning_global
-  lacework_integration_name = "TF agentless workload test2"
-}
+#provider "aws" {
+#  alias = "usw2"
+#  region = "us-west-2"
+#}
+#module "lacework_aws_agentless_scanning_global" {
+#  source = "github.com/lwsporcello/terraform-aws-agentless-scanning"
+#  global                    = true
+#  lacework_integration_name = "TF agentless workload test2"
+#}
+#module "lacework_aws_agentless_scanning_regional_1" {
+#  source = "github.com/lwsporcello/terraform-aws-agentless-scanning"
+#  regional                  = true
+#  global_module_reference   = module.lacework_aws_agentless_scanning_global
+#  lacework_integration_name = "TF agentless workload test2"
+#}
+#module "lacework_aws_agentless_scanning_regional_2" {
+#  source = "github.com/lwsporcello/terraform-aws-agentless-scanning"
+#  providers = {
+#    aws = aws.usw2
+#  }
+#  regional                  = true
+#  global_module_reference   = module.lacework_aws_agentless_scanning_global
+#  lacework_integration_name = "TF agentless workload test2"
+#}
