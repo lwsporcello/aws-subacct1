@@ -42,10 +42,10 @@
 #}
 
 #single account multi region example
-#provider "aws" {
-#  alias = "usw2"
-#  region = "us-west-2"
-#}
+provider "aws" {
+  alias = "usw2"
+  region = "us-west-2"
+}
 #module "lacework_aws_agentless_scanning_global" {
 #  source = "github.com/lwsporcello/terraform-aws-agentless-scanning"
 #  global                    = true
