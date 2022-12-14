@@ -20,12 +20,12 @@
 #}
 
 #single account single region example
-#module "lacework_aws_agentless_scanning_3" {
-#  source = "github.com/lwsporcello/terraform-aws-agentless-scanning"
+module "lacework_aws_agentless_scanning_3" {
+  source = "github.com/lwsporcello/terraform-aws-agentless-scanning"
   #version = "~> 0.6"
 
-#  global   = true
-#  regional = true
+  global   = true
+  regional = true
   #use_existing_iam_role       = true
   #use_existing_event_role     = true
   #use_existing_execution_role = true
@@ -38,8 +38,8 @@
   #agentless_scan_ecs_event_role_arn     = "arn:aws:iam::626835103576:role/lacework-ecs-event-role"
 
   #suffix                    = "sporcello0002"
-#  lacework_integration_name = "TF agentless workload test2"
-#}
+  lacework_integration_name = "TF agentless workload test2"
+}
 
 #single account multi region example
 provider "aws" {
