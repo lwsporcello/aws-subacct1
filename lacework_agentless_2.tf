@@ -46,14 +46,14 @@ provider "aws" {
   alias  = "usw2"
   region = "us-west-2"
 }
-module "lacework_aws_agentless_scanning_global" {
-  source                          = "github.com/lwsporcello/terraform-aws-agentless-scanning"
-  global                          = true
-  lacework_integration_name       = "TF agentless workload test2"
-  use_existing_cross_account_role = true
-  cross_account_role_arn          = "arn:aws:iam::626835103576:role/lacework-ca-role"
-  external_id                     = "VON8ab7cfd0"
-}
+#module "lacework_aws_agentless_scanning_global" {
+#  source                          = "github.com/lwsporcello/terraform-aws-agentless-scanning"
+#  global                          = true
+#  lacework_integration_name       = "TF agentless workload test2"
+#  use_existing_cross_account_role = true
+#  cross_account_role_arn          = "arn:aws:iam::626835103576:role/lacework-ca-role"
+#  external_id                     = "VON8ab7cfd0"
+#}
 #module "lacework_aws_agentless_scanning_regional_1" {
 #  source                    = "github.com/lwsporcello/terraform-aws-agentless-scanning"
 #  regional                  = true
