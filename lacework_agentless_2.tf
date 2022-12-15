@@ -66,11 +66,11 @@ module "lacework_aws_agentless_scanning_regional_1" {
   regional                  = true
   global_module_reference   = module.lacework_aws_agentless_scanning_global
 }
-#module "lacework_aws_agentless_scanning_regional_2" {
-#  source = "github.com/lwsporcello/terraform-aws-agentless-scanning"
-#  providers = {
-#    aws = aws.usw2
-#  }
-#  regional                  = true
-#  global_module_reference   = module.lacework_aws_agentless_scanning_global
-#}
+module "lacework_aws_agentless_scanning_regional_2" {
+  source                    = "github.com/lwsporcello/terraform-aws-agentless-scanning"
+  regional                  = true
+  global_module_reference   = module.lacework_aws_agentless_scanning_global
+  providers = {
+    aws = aws.usw2
+  }
+}
