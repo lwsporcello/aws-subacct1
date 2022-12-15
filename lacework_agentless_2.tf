@@ -61,12 +61,11 @@ module "lacework_aws_agentless_scanning_global" {
   agentless_scan_ecs_event_role_arn     = "arn:aws:iam::626835103576:role/lacework-ecs-event-role"
   suffix                                = "sporcello0003"
 }
-#module "lacework_aws_agentless_scanning_regional_1" {
-#  source                    = "github.com/lwsporcello/terraform-aws-agentless-scanning"
-#  regional                  = true
-#  global_module_reference   = module.lacework_aws_agentless_scanning_global
-#  lacework_integration_name = "TF agentless workload test2"
-#}
+module "lacework_aws_agentless_scanning_regional_1" {
+  source                    = "github.com/lwsporcello/terraform-aws-agentless-scanning"
+  regional                  = true
+  global_module_reference   = module.lacework_aws_agentless_scanning_global
+}
 #module "lacework_aws_agentless_scanning_regional_2" {
 #  source = "github.com/lwsporcello/terraform-aws-agentless-scanning"
 #  providers = {
@@ -74,5 +73,4 @@ module "lacework_aws_agentless_scanning_global" {
 #  }
 #  regional                  = true
 #  global_module_reference   = module.lacework_aws_agentless_scanning_global
-#  lacework_integration_name = "TF agentless workload test2"
 #}
