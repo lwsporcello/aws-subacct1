@@ -87,3 +87,11 @@ module "lacework_aws_agentless_scanning_global" {
 
   lacework_integration_name = "TF_agentless_test"
 }
+
+module "lacework_aws_agentless_scanning_regional" {
+  source  = "lacework/agentless-scanning/aws"
+  version = "~> 0.5"
+
+  regional                = true
+  global_module_reference = module.lacework_aws_agentless_scanning_global
+}
