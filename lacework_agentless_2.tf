@@ -77,31 +77,31 @@ provider "aws" {
 
 ##-----------------
 
-#module "lacework_aws_agentless_scanning_global" {
-#  source  = "lacework/agentless-scanning/aws"
-#  version = "~> 0.5"
+module "lacework_aws_agentless_scanning_global" {
+  source  = "lacework/agentless-scanning/aws"
+  version = "~> 0.5"
 
-#  global       = true
-#  organization = {
-#    monitored_accounts = ["011855505487"]
-#    management_account = "626835103576"
-#  }
+  global       = true
+  organization = {
+    monitored_accounts = ["011855505487"]
+    management_account = "626835103576"
+  }
 
-#  lacework_integration_name = "TF_agentless_test"
-#}
+  lacework_integration_name = "TF_agentless_test"
+}
 
-#module "lacework_aws_agentless_scanning_regional" {
-#  source  = "lacework/agentless-scanning/aws"
-#  version = "~> 0.5"
+module "lacework_aws_agentless_scanning_regional" {
+  source  = "lacework/agentless-scanning/aws"
+  version = "~> 0.5"
 
-#  regional                = true
-#  global_module_reference = module.lacework_aws_agentless_scanning_global
-#}
+  regional                = true
+  global_module_reference = module.lacework_aws_agentless_scanning_global
+}
 
-#module "lacework_aws_agentless_management_scanning_role" {
-#  source  = "lacework/agentless-scanning/aws"
-#  version = "~> 0.5"
+module "lacework_aws_agentless_management_scanning_role" {
+  source  = "lacework/agentless-scanning/aws"
+  version = "~> 0.5"
 
-#  snapshot_role           = true
-#  global_module_reference = module.lacework_aws_agentless_scanning_global
-#}
+  snapshot_role           = true
+  global_module_reference = module.lacework_aws_agentless_scanning_global
+}
