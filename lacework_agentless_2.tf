@@ -76,19 +76,21 @@ provider "aws" {
 #}
 
 module "lacework_aws_agentless_scanning_global" {
+  count = 0
   source  = "lacework/agentless-scanning/aws"
   version = "~> 0.5"
 
   global       = true
   organization = {
     monitored_accounts = ["011855505487"]
-    management_account = "626835103576"
+    #management_account = "626835103576"
   }
 
   lacework_integration_name = "TF_agentless_test"
 }
 
 module "lacework_aws_agentless_scanning_regional" {
+  count = 0
   source  = "lacework/agentless-scanning/aws"
   version = "~> 0.5"
 
