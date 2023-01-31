@@ -76,7 +76,6 @@ provider "aws" {
 #}
 
 module "lacework_aws_agentless_scanning_global" {
-  count = 0
   source  = "lacework/agentless-scanning/aws"
   version = "~> 0.5"
 
@@ -89,11 +88,18 @@ module "lacework_aws_agentless_scanning_global" {
   lacework_integration_name = "TF_agentless_test"
 }
 
-module "lacework_aws_agentless_scanning_regional" {
-  count = 0
-  source  = "lacework/agentless-scanning/aws"
-  version = "~> 0.5"
+#module "lacework_aws_agentless_scanning_regional" {
+#  source  = "lacework/agentless-scanning/aws"
+#  version = "~> 0.5"
 
-  regional                = true
-  global_module_reference = module.lacework_aws_agentless_scanning_global
-}
+#  regional                = true
+#  global_module_reference = module.lacework_aws_agentless_scanning_global
+#}
+
+#module "lacework_aws_agentless_management_scanning_role" {
+#  source  = "lacework/agentless-scanning/aws"
+#  version = "~> 0.5"
+
+#  snapshot_role           = true
+#  global_module_reference = module.lacework_aws_agentless_scanning_global
+#}
