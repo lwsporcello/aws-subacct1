@@ -83,7 +83,7 @@ module "lacework_aws_agentless_scanning_global" {
   global       = true
   organization = {
     monitored_accounts = ["011855505487"]
-    #management_account = "626835103576"
+    management_account = "626835103576"
   }
 
   lacework_integration_name = "TF_agentless_test"
