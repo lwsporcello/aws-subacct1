@@ -81,7 +81,7 @@ module "lacework_aws_agentless_scanning_global" {
   source  = "lacework/agentless-scanning/aws"
   version = "~> 0.5"
 
-  global       = true
+  global = true
   organization = {
     monitored_accounts = ["011855505487"]
     management_account = "626835103576"

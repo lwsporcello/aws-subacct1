@@ -1,11 +1,11 @@
 provider "aws" {
-  alias  = "log_archive"
+  alias = "log_archive"
   # profile  = "<profile name for log_archive account in ~/.aws/credentials>"
   region = "us-east-1"
 }
 
 provider "aws" {
-  alias  = "audit"
+  alias = "audit"
   # profile  = "<profile name for audit account in ~/.aws/credentials>"
   region = "us-east-1"
 }
@@ -17,8 +17,8 @@ provider "aws" {
 #    aws.audit = aws.audit
 #    aws.log_archive = aws.log_archive
 #  }
-  # SNS Topic ARN is usually in the form: arn:aws:sns:<control_tower_region>:<aws_audit_account_id>:aws-controltower-AllConfigNotifications
+# SNS Topic ARN is usually in the form: arn:aws:sns:<control_tower_region>:<aws_audit_account_id>:aws-controltower-AllConfigNotifications
 #  sns_topic_arn   = "arn:aws:sns:us-east-1:626835103576:sporcello-topic"
-  # S3 Bucket ARN is usually in the form: arn:aws:s3:::aws-controltower-logs-<log_archive_account_id>-<control_tower_region>
+# S3 Bucket ARN is usually in the form: arn:aws:s3:::aws-controltower-logs-<log_archive_account_id>-<control_tower_region>
 #  s3_bucket_arn = "arn:aws:s3:::sporcello-test-bucket"
 #}
