@@ -13,5 +13,5 @@ module "aws_cloudtrail" {
   iam_role_name             = module.aws_config.iam_role_name
   iam_role_arn              = module.aws_config.iam_role_arn
   iam_role_external_id      = module.aws_config.external_id
-  lacework_integration_name = "TF-config-sub1"
+  lacework_integration_name = "TF-cloudtrail-sub1"
 }
