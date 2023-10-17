@@ -1,14 +1,14 @@
-provider "aws" {
-  alias = "log_archive"
+#provider "aws" {
+#  alias = "log_archive"
   # profile  = "<profile name for log_archive account in ~/.aws/credentials>"
-  region = "us-east-1"
-}
+#  region = "us-east-1"
+#}
 
-provider "aws" {
-  alias = "audit"
+#provider "aws" {
+#  alias = "audit"
   # profile  = "<profile name for audit account in ~/.aws/credentials>"
-  region = "us-east-1"
-}
+#  region = "us-east-1"
+#}
 
 #module "control_tower_integration_setup" {
 #  source  = "lacework/cloudtrail-controltower/aws"
