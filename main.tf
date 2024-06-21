@@ -1,4 +1,10 @@
 terraform {
+  backend "remote" {
+    organization = "sporcello"
+    workspaces {
+      name = "aws-subacct1"
+    }
+  }
   required_providers {
     aws = {
       source  = "hashicorp/aws"
