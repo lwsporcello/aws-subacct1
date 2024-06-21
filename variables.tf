@@ -3,24 +3,11 @@ variable "AWS_REGION" {
   type = string
 }
 
-#lacework
-variable "lacework_account_name" {
+variable "TFC_AWS_RUN_ROLE_ARN" {
   type = string
 }
 
-variable "proxy_scanner_token" {
-  type = string
-}
-
-variable "lw_eks_agent_token" {
-  type = string
-}
-
-variable "registry_username" {
-  type = string
-}
-
-variable "registry_password" {
+variable "TFC_AWS_PROVIDER_AUTH" {
   type = string
 }
 
