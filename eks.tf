@@ -42,17 +42,17 @@ module "eks_cluster" {
   cluster_version                        = local.version
   cloudwatch_log_group_retention_in_days = 30
 
-  cluster_addons = {
-    coredns = {
-      most_recent = true
-    }
-    kube-proxy = {
-      most_recent = true
-    }
-    vpc-cni = {
-      most_recent = true
-    }
-  }
+  #cluster_addons = {
+  #  coredns = {
+  #    most_recent = true
+  #  }
+  #  kube-proxy = {
+  #    most_recent = true
+  #  }
+  #  vpc-cni = {
+  #    most_recent = true
+  #  }
+  #}
 
   #kms config
   create_kms_key          = true

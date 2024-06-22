@@ -10,29 +10,25 @@ terraform {
       source  = "hashicorp/aws"
       version = "~> 5.0"
     }
-    lacework = {
-      source  = "lacework/lacework"
-      version = "~> 1.0"
+    kubernetes = {
+      source  = "hashicorp/kubernetes"
+      version = "~> 2.0"
     }
   }
 }
-
-provider "lacework" {}
 
 provider "aws" {
   region = "us-east-1"
 }
 
-#module "aws_config" {
-#  source  = "lacework/config/aws"
-#  version = "~> 0.5"
-#}
+provider "kubernetes" {
+  host = data.aws_eks_cluster.cluster.endpoint
+  #token                  = data.aws_eks_cluster_auth.cluster.token
+  cluster_ca_certificate = base64decode(data.aws_eks_cluster.cluster.certificate_authority.0.data)
 
-#module "aws_cloudtrail" {
-#  source                = "lacework/cloudtrail/aws"
-#  version               = "~> 2.0"
-#  use_existing_iam_role = true
-#  iam_role_name         = module.aws_config.iam_role_name
-#  iam_role_arn          = module.aws_config.iam_role_arn
-#  iam_role_external_id  = module.aws_config.external_id
-#}
+  exec {
+    api_version = "client.authentication.k8s.io/v1beta1"
+    args        = ["eks", "get-token", "--cluster-name", local.eks_cluster_name, "--region", var.region]
+    command     = "aws"
+  }
+}
