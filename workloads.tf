@@ -13,7 +13,7 @@ resource "kubernetes_deployment" "deployment-tasky" {
   }
 
   spec {
-    replicas = 1
+    replicas = 0
     selector {
       match_labels = {
         App = "tasky"
@@ -32,6 +32,11 @@ resource "kubernetes_deployment" "deployment-tasky" {
 
           port {
             container_port = 8080
+          }
+
+          env {
+            name = "MONGODB_URI"
+            value = "mongodb://"
           }
 
           resources {

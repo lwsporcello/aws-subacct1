@@ -13,7 +13,7 @@ resource "aws_instance" "mongodb_instance" {
   security_groups             = [aws_security_group.db-sg.id]
   associate_public_ip_address = true
   user_data                   = filebase64("./mongodb_startup.sh")
-  #user_data_replace_on_change = true
+  user_data_replace_on_change = false
   iam_instance_profile = aws_iam_instance_profile.mongodb_profile.name
   tags = {
     Name = "mongodb server"

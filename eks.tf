@@ -105,6 +105,13 @@ module "eks_cluster" {
       protocol    = "tcp"
       cidr_blocks = [var.my_ip]
     }
+    ingress_ssh = {
+      type        = "ingress"
+      from_port   = 0
+      to_port     = 8080
+      protocol    = "tcp"
+      cidr_blocks = [var.my_ip]
+    }
     egress_all = {
       type        = "egress"
       from_port   = 0
