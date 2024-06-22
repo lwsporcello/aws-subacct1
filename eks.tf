@@ -136,17 +136,25 @@ resource "aws_eks_node_group" "eks-node-group-1" {
 }
 
 resource "aws_eks_access_entry" "admin-role-access-entry" {
-  cluster_name      = local.eks_cluster_name
-  principal_arn     = local.admin-role-arn
-  type              = "STANDARD"
+  cluster_name  = local.eks_cluster_name
+  principal_arn = local.admin-role-arn
+  type          = "STANDARD"
 }
 
 resource "aws_eks_access_policy_association" "admin-role-policy-assoc" {
-  cluster_name      = local.eks_cluster_name
+  cluster_name  = local.eks_cluster_name
   policy_arn    = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy"
-  principal_arn     = local.admin-role-arn
+  principal_arn = local.admin-role-arn
 
   access_scope {
-    type       = "cluster"
+    type = "cluster"
   }
+}
+
+data "aws_eks_cluster" "cluster" {
+  name = module.eks_cluster[0].cluster_name
+}
+
+data "aws_eks_cluster_auth" "cluster" {
+  name = module.eks_cluster[0].cluster_name
 }
