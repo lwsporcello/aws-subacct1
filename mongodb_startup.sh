@@ -8,13 +8,6 @@ apt-get install -y mongodb-org
 systemctl start mongod
 systemctl enable mongod
 
-sudo mongosh <<EOF
-use admin
-db.createUser(
-  {
-    user: "myMongoUser1987",
-    pwd: "myMongoPass1987",
-    roles: [ { role: "root", db: "admin" }]
-  }
-)
-EOF
+curl https://raw.githubusercontent.com/lwsporcello/startup-scripts/main/createUser.js -o createUser.js
+
+mongo admin -u admin -p admin < createUser.js
