@@ -15,8 +15,3 @@ mongosh < /createUser.js
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
 unzip awscliv2.zip
 bash ./aws/install
-
-aws configure set aws_access_key_id "AKIAZD4SIT5MDSW6XR6W"
-aws configure set aws_secret_access_key "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"
-aws configure set region "us-east-1"
-
