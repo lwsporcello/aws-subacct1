@@ -64,7 +64,7 @@ module "eks_cluster" {
   ]
 
   #auth mode
-  authentication_mode = "API_AND_CONFIG_MAP"
+  authentication_mode                      = "API_AND_CONFIG_MAP"
   enable_cluster_creator_admin_permissions = true
 
   create_cluster_security_group = true
@@ -133,4 +133,11 @@ resource "aws_eks_node_group" "eks-node-group-1" {
   }
 
   depends_on = [module.eks_cluster[0], aws_iam_role.iam-role-eks-nodes]
+}
+
+resource "aws_eks_access_entry" "admin-role" {
+  cluster_name      = local.eks_cluster_name
+  principal_arn     = local.admin-role-arn
+  kubernetes_groups = ["system:nodes"]
+  type              = "STANDARD"
 }
