@@ -135,9 +135,18 @@ resource "aws_eks_node_group" "eks-node-group-1" {
   depends_on = [module.eks_cluster[0], aws_iam_role.iam-role-eks-nodes]
 }
 
-resource "aws_eks_access_entry" "admin-role" {
+resource "aws_eks_access_entry" "admin-role-access-entry" {
   cluster_name      = local.eks_cluster_name
   principal_arn     = local.admin-role-arn
-  kubernetes_groups = ["system:nodes"]
   type              = "STANDARD"
+}
+
+resource "aws_eks_access_policy_association" "admin-role-policy-assoc" {
+  cluster_name      = local.eks_cluster_name
+  policy_arn    = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy"
+  principal_arn     = local.admin-role-arn
+
+  access_scope {
+    type       = "cluster"
+  }
 }
