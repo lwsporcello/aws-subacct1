@@ -4,7 +4,7 @@ resource "aws_key_pair" "ssh_keypair" {
 }
 
 resource "aws_instance" "mongodb_instance" {
-  count = 1
+  count = 0
   ami   = "ami-0fc5d935ebf8bc3bc" # Ubuntu 20.04 LTS
   #  ami                         = "ami-0ff8a91507f77f867" # Amazon Linux
   instance_type               = "t2.micro"
