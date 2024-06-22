@@ -8,10 +8,11 @@ apt-get install -y mongodb-org
 systemctl start mongod
 systemctl enable mongod
 
+#Configure MongoDB User+Pass for Auth
 curl https://raw.githubusercontent.com/lwsporcello/startup-scripts/main/createUser.js -o /createUser.js
-sleep 5
 mongosh < /createUser.js
 
+#Download, Install AWS CLI for DB Backup
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
 unzip awscliv2.zip
 bash ./aws/install
