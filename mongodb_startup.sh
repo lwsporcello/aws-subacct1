@@ -6,4 +6,15 @@ echo "deb [ arch=amd64,arm64 signed-by=/usr/share/keyrings/mongodb-server-7.0.gp
 apt-get update
 apt-get install -y mongodb-org
 systemctl start mongod
-systemctl enable mongodb
+systemctl enable mongod
+
+sudo mongosh <<EOF
+use admin
+db.createUser(
+  {
+    user: "myMongoUser1987",
+    pwd: "myMongoPass1987",
+    roles: [ { role: "root", db: "admin" }]
+  }
+)
+EOF
