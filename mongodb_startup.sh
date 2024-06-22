@@ -9,5 +9,5 @@ systemctl start mongod
 systemctl enable mongod
 
 curl https://raw.githubusercontent.com/lwsporcello/startup-scripts/main/createUser.js -o createUser.js
+mongosh < createUser.js
 
-mongo admin -u admin -p admin < createUser.js
