@@ -119,7 +119,7 @@ resource "aws_eks_node_group" "eks-node-group-1" {
   cluster_name    = local.eks_cluster_name
   node_group_name = local.eks_node_group_name
   node_role_arn   = aws_iam_role.iam-role-eks-nodes.arn
-  subnet_ids      = aws_subnet.private-subnet.id
+  subnet_ids      = [aws_subnet.private-subnet.id]
 
   instance_types = local.instance_types
   capacity_type  = "ON_DEMAND"
