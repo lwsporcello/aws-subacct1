@@ -65,6 +65,7 @@ module "eks_cluster" {
 
   #auth mode
   authentication_mode = "API_AND_CONFIG_MAP"
+  enable_cluster_creator_admin_permissions = true
 
   create_cluster_security_group = true
   #cluster_security_group_name   = local.cluster_security_group_name
