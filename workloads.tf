@@ -47,7 +47,7 @@ resource "kubernetes_deployment" "deployment-tasky" {
 
           env {
             name  = "SECRET_KEY"
-            value = "sporcello123"
+            value = "${var.secret-key}"
           }
 
           resources {
