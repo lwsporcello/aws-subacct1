@@ -13,7 +13,7 @@ resource "kubernetes_deployment" "deployment-tasky" {
   }
 
   spec {
-    replicas = 0
+    replicas = 1
     selector {
       match_labels = {
         App = "tasky"
@@ -36,7 +36,12 @@ resource "kubernetes_deployment" "deployment-tasky" {
 
           env {
             name  = "MONGODB_URI"
-            value = "mongodb://"
+            value = "mongodb://myMongoUser1987:myMongoPass1987@10.10.1.81:27017"
+          }
+
+          env {
+            name  = "SECRET_KEY"
+            value = "sporcello123"
           }
 
           resources {
