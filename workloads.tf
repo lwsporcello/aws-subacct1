@@ -7,7 +7,7 @@ resource "kubernetes_namespace" "namespace-tasky" {
 resource "kubernetes_deployment" "deployment-tasky" {
   metadata {
     name      = "tasky"
-    namespace = kubernetes_namespace.namespace-tasky.metadata.0.name
+    namespace = "tasky"
     labels = {
       App = "tasky"
     }
@@ -64,11 +64,11 @@ resource "kubernetes_deployment" "deployment-tasky" {
 resource "kubernetes_service" "tasky" {
   metadata {
     name      = "tasky"
-    namespace = kubernetes_namespace.namespace-tasky.metadata.0.name
+    namespace = "tasky"
   }
   spec {
     selector = {
-      app = kubernetes_deployment.deployment-tasky.spec.0.template.0.metadata.0.labels.app
+      app = "tasky"
     }
     type = "LoadBalancer"
     port {
