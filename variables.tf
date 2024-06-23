@@ -24,3 +24,7 @@ variable "mongo-user" {
 variable "mongo-pass" {
   type = string
 }
+
+variable "secret-key" {
+  type = string
+}
