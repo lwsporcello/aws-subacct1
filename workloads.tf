@@ -5,6 +5,10 @@ resource "kubernetes_namespace" "namespace-tasky" {
 }
 
 resource "kubernetes_deployment" "deployment-tasky" {
+  depends_on = [
+    kubernetes_service_account.tasky-sa,
+    kubernetes_cluster_role_binding.tasky-sa-rb
+  ]
   metadata {
     name      = "tasky"
     namespace = "tasky"
@@ -27,6 +31,7 @@ resource "kubernetes_deployment" "deployment-tasky" {
         }
       }
       spec {
+        service_account_name = "tasky-sa"
         container {
           image = "sporcello/tasky:latest"
           name  = "tasky"
@@ -75,5 +80,36 @@ resource "kubernetes_service" "tasky" {
       port        = 8080
       target_port = 8080
     }
+  }
+}
+
+resource "kubernetes_service_account" "tasky-sa" {
+  metadata {
+    name      = "tasky-sa"
+    namespace = "tasky"
+    labels = {
+      "app.kubernetes.io/name"      = "tasky"
+      "app.kubernetes.io/component" = "controller"
+    }
+  }
+}
+
+resource "kubernetes_cluster_role_binding" "tasky-sa-rb" {
+  depends_on = [
+    kubernetes_service_account.tasky-sa
+  ]
+
+  metadata {
+    name = "tasky-sa-rb"
+  }
+  role_ref {
+    api_group = "rbac.authorization.k8s.io"
+    kind      = "ClusterRole"
+    name      = "cluster-admin"
+  }
+  subject {
+    kind      = "ServiceAccount"
+    name      = "tasky-sa"
+    namespace = "tasky"
   }
 }
