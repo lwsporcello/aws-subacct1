@@ -68,8 +68,6 @@ module "eks_cluster" {
   enable_cluster_creator_admin_permissions = true
 
   create_cluster_security_group = true
-  #cluster_security_group_name   = local.cluster_security_group_name
-  #node_security_group_name      = local.node_security_group_name
 
   #create cluster security group
   cluster_security_group_additional_rules = {

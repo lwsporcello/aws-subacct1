@@ -4,9 +4,8 @@ resource "aws_key_pair" "ssh_keypair" {
 }
 
 resource "aws_instance" "mongodb_instance" {
-  count = 1
-  ami   = "ami-0fc5d935ebf8bc3bc" # Ubuntu 20.04 LTS
-  #  ami                         = "ami-0ff8a91507f77f867" # Amazon Linux
+  count                       = 1
+  ami                         = "ami-0fc5d935ebf8bc3bc" # Ubuntu 20.04 LTS
   instance_type               = "t2.micro"
   key_name                    = aws_key_pair.ssh_keypair.key_name
   subnet_id                   = aws_subnet.public-subnet.id
@@ -17,20 +16,5 @@ resource "aws_instance" "mongodb_instance" {
   iam_instance_profile        = aws_iam_instance_profile.mongodb_profile.name
   tags = {
     Name = "mongodb server"
-  }
-}
-
-resource "aws_instance" "test_instance" {
-  count = 0
-  ami   = "ami-0fc5d935ebf8bc3bc" # Ubuntu 20.04 LTS
-  #  ami                         = "ami-0ff8a91507f77f867" # Amazon Linux
-  instance_type               = "t2.micro"
-  key_name                    = aws_key_pair.ssh_keypair.key_name
-  subnet_id                   = aws_subnet.public-subnet.id
-  vpc_security_group_ids      = [aws_security_group.db-sg.id]
-  associate_public_ip_address = true
-  iam_instance_profile        = aws_iam_instance_profile.mongodb_profile.name
-  tags = {
-    Name = "test server"
   }
 }

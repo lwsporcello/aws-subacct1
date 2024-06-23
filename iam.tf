@@ -96,7 +96,3 @@ resource "aws_iam_role_policy_attachment" "AmazonEC2ContainerRegistryReadOnly" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"
   role       = aws_iam_role.iam-role-eks-nodes.name
 }
-#resource "aws_iam_role_policy_attachment" "DescribeTagsEC2" {
-#  policy_arn = "arn:aws:iam::950194951070:policy/DescribeTagsEC2"
-#  role       = aws_iam_role.iam-role-eks-nodes.name
-#}
