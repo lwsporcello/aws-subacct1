@@ -16,3 +16,11 @@ variable "my_ip" {
   type    = string
   default = "100.1.47.199/32"
 }
+
+variable "mongo-user" {
+  type = string
+}
+
+variable "mongo-pass" {
+  type = string
+}

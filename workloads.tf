@@ -42,7 +42,7 @@ resource "kubernetes_deployment" "deployment-tasky" {
 
           env {
             name  = "MONGODB_URI"
-            value = "mongodb://myMongoUser1987:myMongoPass1987@10.10.1.81:27017"
+            value = "mongodb://${var.mongo-user}:${var.mongo-pass}@10.10.1.81:27017"
           }
 
           env {
