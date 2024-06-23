@@ -9,7 +9,7 @@ resource "kubernetes_deployment" "deployment-tasky" {
     name      = "tasky"
     namespace = "tasky"
     labels = {
-      App = "tasky"
+      app = "tasky"
     }
   }
 
@@ -17,7 +17,7 @@ resource "kubernetes_deployment" "deployment-tasky" {
     replicas = 1
     selector {
       match_labels = {
-        App = "tasky"
+        app = "tasky"
       }
     }
     template {
