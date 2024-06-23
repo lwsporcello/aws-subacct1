@@ -80,6 +80,13 @@ module "eks_cluster" {
       protocol                   = "-1"
       source_node_security_group = true
     }
+    ingress_http = {
+      type        = "ingress"
+      from_port   = 0
+      to_port     = 8080
+      protocol    = "tcp"
+      cidr_blocks = [var.my_ip]
+    }
     egress_all = {
       type        = "egress"
       protocol    = "-1"
@@ -102,13 +109,6 @@ module "eks_cluster" {
       type        = "ingress"
       from_port   = 0
       to_port     = 22
-      protocol    = "tcp"
-      cidr_blocks = [var.my_ip]
-    }
-    ingress_ssh = {
-      type        = "ingress"
-      from_port   = 0
-      to_port     = 8080
       protocol    = "tcp"
       cidr_blocks = [var.my_ip]
     }
