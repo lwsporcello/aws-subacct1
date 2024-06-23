@@ -35,7 +35,7 @@ resource "kubernetes_deployment" "deployment-tasky" {
           }
 
           env {
-            name = "MONGODB_URI"
+            name  = "MONGODB_URI"
             value = "mongodb://"
           }
 
