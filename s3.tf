@@ -34,6 +34,7 @@ resource "aws_s3_bucket_acl" "mongodb-backup" {
 
 data "aws_iam_policy_document" "s3_read_permissions" {
   statement {
+    principals = "*"
     effect = "Allow"
     actions = ["s3:*"]
     resources = [aws_s3_bucket.mongodb-backup.id]
@@ -42,5 +43,5 @@ data "aws_iam_policy_document" "s3_read_permissions" {
 
 resource "aws_s3_bucket_policy" "bucket_policy" {
   bucket = aws_s3_bucket.mongodb-backup.id
-  policy = data.aws_iam_policy_document.s3_read_permissions
+  policy = data.aws_iam_policy_document.s3_read_permissions.json
 }
