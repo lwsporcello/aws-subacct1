@@ -83,13 +83,13 @@ resource "aws_security_group" "db-sg" {
     cidr_blocks = ["0.0.0.0/0"]
     description = "Allow incoming SSH connections from public internet"
   }
-#  ingress {
-#    from_port   = 8080
-#    to_port     = 8080
-#    protocol    = "tcp"
-#    cidr_blocks = ["0.0.0.0/0"]
-#    description = "Allow incoming HTTP connections from public internet"
-#  }
+  #  ingress {
+  #    from_port   = 8080
+  #    to_port     = 8080
+  #    protocol    = "tcp"
+  #    cidr_blocks = ["0.0.0.0/0"]
+  #    description = "Allow incoming HTTP connections from public internet"
+  #  }
   ingress {
     from_port   = 27017
     to_port     = 27017
