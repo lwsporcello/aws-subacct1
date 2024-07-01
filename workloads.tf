@@ -1,13 +1,15 @@
 resource "kubernetes_namespace" "namespace-tasky" {
+  count = 1
   metadata {
     name = "tasky"
   }
 }
 
 resource "kubernetes_deployment" "deployment-tasky" {
+  count = 1
   depends_on = [
-    kubernetes_service_account.tasky-sa,
-    kubernetes_cluster_role_binding.tasky-sa-rb
+    kubernetes_service_account.tasky-sa[0],
+    kubernetes_cluster_role_binding.tasky-sa-rb[0]
   ]
   metadata {
     name      = "tasky"
@@ -67,6 +69,7 @@ resource "kubernetes_deployment" "deployment-tasky" {
 }
 
 resource "kubernetes_service" "tasky" {
+  count = 1
   metadata {
     name      = "tasky"
     namespace = "tasky"
@@ -84,6 +87,7 @@ resource "kubernetes_service" "tasky" {
 }
 
 resource "kubernetes_service_account" "tasky-sa" {
+  count = 1
   metadata {
     name      = "tasky-sa"
     namespace = "tasky"
@@ -95,8 +99,9 @@ resource "kubernetes_service_account" "tasky-sa" {
 }
 
 resource "kubernetes_cluster_role_binding" "tasky-sa-rb" {
+  count = 1
   depends_on = [
-    kubernetes_service_account.tasky-sa
+    kubernetes_service_account.tasky-sa[0]
   ]
 
   metadata {
