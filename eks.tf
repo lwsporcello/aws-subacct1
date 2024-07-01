@@ -13,7 +13,7 @@ locals {
   enabled_log_types = ["audit"]
   version           = "1.28"
 
-  eks_cluster_count = 1
+  eks_cluster_count = 0
 
   #auto scaling group
   desired_size   = 1
