@@ -1,5 +1,6 @@
 #Mongo DB IAM
 data "aws_iam_policy_document" "ec2_instance_assume_role_policy" {
+  count = 1
   statement {
     effect  = "Allow"
     actions = ["sts:AssumeRole"]
@@ -12,6 +13,7 @@ data "aws_iam_policy_document" "ec2_instance_assume_role_policy" {
 }
 
 data "aws_iam_policy_document" "iam_policy_ec2_instance_document" {
+  count = 1
   statement {
     effect    = "Allow"
     actions   = ["ec2:*"]
@@ -25,22 +27,25 @@ data "aws_iam_policy_document" "iam_policy_ec2_instance_document" {
 }
 
 resource "aws_iam_role" "mongodb_instance_role" {
+  count              = 1
   name               = "ec2_instance_role"
-  assume_role_policy = data.aws_iam_policy_document.ec2_instance_assume_role_policy.json
+  assume_role_policy = data.aws_iam_policy_document.ec2_instance_assume_role_policy[0].json
   inline_policy {
     name   = "mongodb-instance-role"
-    policy = data.aws_iam_policy_document.iam_policy_ec2_instance_document.json
+    policy = data.aws_iam_policy_document.iam_policy_ec2_instance_document[0].json
   }
 }
 
 resource "aws_iam_instance_profile" "mongodb_profile" {
-  name = "mongodb-instance-profile"
-  role = aws_iam_role.mongodb_instance_role.name
+  count = 1
+  name  = "mongodb-instance-profile"
+  role  = aws_iam_role.mongodb_instance_role[0].name
 }
 
 #EKS IAM
 #create IAM role for cluster
 resource "aws_iam_role" "iam-role-eks-cluster" {
+  count              = 1
   name               = local.iam_cluster_role_name
   assume_role_policy = <<POLICY
 {
@@ -60,6 +65,7 @@ POLICY
 
 #create IAM role for node group
 resource "aws_iam_role" "iam-role-eks-nodes" {
+  count              = 1
   name               = local.iam_node_group_role_name
   assume_role_policy = <<POLICY
 {
@@ -79,20 +85,24 @@ POLICY
 
 #attach policies to cluster role
 resource "aws_iam_role_policy_attachment" "eks-cluster-AmazonEKSClusterPolicy" {
+  count      = 1
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
-  role       = aws_iam_role.iam-role-eks-cluster.name
+  role       = aws_iam_role.iam-role-eks-cluster[0].name
 }
 
 #attach policies to ng role
 resource "aws_iam_role_policy_attachment" "AmazonEKSWorkerNodePolicy" {
+  count      = 1
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy"
-  role       = aws_iam_role.iam-role-eks-nodes.name
+  role       = aws_iam_role.iam-role-eks-nodes[0].name
 }
 resource "aws_iam_role_policy_attachment" "AmazonEKS_CNI_Policy" {
+  count      = 1
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy"
-  role       = aws_iam_role.iam-role-eks-nodes.name
+  role       = aws_iam_role.iam-role-eks-nodes[0].name
 }
 resource "aws_iam_role_policy_attachment" "AmazonEC2ContainerRegistryReadOnly" {
+  count      = 1
   policy_arn = "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"
-  role       = aws_iam_role.iam-role-eks-nodes.name
+  role       = aws_iam_role.iam-role-eks-nodes[0].name
 }

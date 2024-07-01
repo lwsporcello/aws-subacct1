@@ -33,7 +33,7 @@ module "eks_cluster" {
 
   vpc_id       = aws_vpc.main.id
   subnet_ids   = [aws_subnet.private-subnet-1.id, aws_subnet.private-subnet-2.id]
-  iam_role_arn = aws_iam_role.iam-role-eks-cluster.arn
+  iam_role_arn = aws_iam_role.iam-role-eks-cluster[0].arn
 
   cluster_name                           = local.eks_cluster_name
   cluster_endpoint_private_access        = true
@@ -125,7 +125,7 @@ resource "aws_eks_node_group" "eks-node-group-1" {
   count           = 0
   cluster_name    = local.eks_cluster_name
   node_group_name = local.eks_node_group_name
-  node_role_arn   = aws_iam_role.iam-role-eks-nodes.arn
+  node_role_arn   = aws_iam_role.iam-role-eks-nodes[0].arn
   subnet_ids      = [aws_subnet.private-subnet-1.id, aws_subnet.private-subnet-2.id]
 
   instance_types = local.instance_types

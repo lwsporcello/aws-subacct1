@@ -14,7 +14,7 @@ resource "aws_instance" "mongodb_instance" {
   associate_public_ip_address = true
   user_data                   = filebase64("./mongodb_startup.sh")
   user_data_replace_on_change = false
-  iam_instance_profile        = aws_iam_instance_profile.mongodb_profile.name
+  iam_instance_profile        = aws_iam_instance_profile.mongodb_profile[0].name
   tags = {
     Name = "mongodb server"
   }
