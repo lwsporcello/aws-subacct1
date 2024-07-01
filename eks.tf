@@ -164,11 +164,11 @@ resource "aws_eks_access_policy_association" "admin-role-policy-assoc" {
 }
 
 data "aws_eks_cluster" "cluster" {
-  count = 1
+  count = 0
   name  = module.eks_cluster[0].cluster_name
 }
 
 data "aws_eks_cluster_auth" "cluster" {
-  count = 1
+  count = 0
   name  = module.eks_cluster[0].cluster_name
 }
