@@ -139,7 +139,7 @@ resource "aws_eks_node_group" "eks-node-group-1" {
   }
 
   remote_access {
-    ec2_ssh_key = aws_key_pair.ssh_keypair.key_name
+    ec2_ssh_key = aws_key_pair.ssh_keypair[0].key_name
   }
 
   depends_on = [module.eks_cluster[0], aws_iam_role.iam-role-eks-nodes]
