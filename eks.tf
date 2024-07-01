@@ -122,7 +122,7 @@ module "eks_cluster" {
 
 #new node group resource block
 resource "aws_eks_node_group" "eks-node-group-1" {
-  count           = 1
+  count           = 0
   cluster_name    = local.eks_cluster_name
   node_group_name = local.eks_node_group_name
   node_role_arn   = aws_iam_role.iam-role-eks-nodes.arn
@@ -146,14 +146,14 @@ resource "aws_eks_node_group" "eks-node-group-1" {
 }
 
 resource "aws_eks_access_entry" "admin-role-access-entry" {
-  count         = 1
+  count         = 0
   cluster_name  = local.eks_cluster_name
   principal_arn = local.admin-role-arn
   type          = "STANDARD"
 }
 
 resource "aws_eks_access_policy_association" "admin-role-policy-assoc" {
-  count         = 1
+  count         = 0
   cluster_name  = local.eks_cluster_name
   policy_arn    = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy"
   principal_arn = local.admin-role-arn
